@@ -11,7 +11,7 @@ contract Base {
     owner = msg.sender;
   }
   modifier onlyOwner() {
-    require(mesg.sender == owner, "Not Owner");
+    require(msg.sender == owner, "Not Owner");
     _;
   }
 

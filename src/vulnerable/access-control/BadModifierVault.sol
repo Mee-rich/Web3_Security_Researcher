@@ -1,8 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
-import "forge-std/console.sol";
-
 // “The contract uses tx.origin for authorization,
 // allowing an attacker to bypass access control by forwarding
 // calls through a malicious contract.”
